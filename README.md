@@ -1,1 +1,2 @@
-# javascript.svelte.learning-english
+### 영단어 받아쓰기
+#### svelte도 써볼 겸
