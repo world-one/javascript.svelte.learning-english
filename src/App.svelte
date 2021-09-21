@@ -1,3 +1,4 @@
+
 <div class="wrap">
   <h1 class="title">{title}</h1>
   <ul class="words">
@@ -13,16 +14,13 @@
   </ul>
 </div>
 
-<script lang="ts">
+<script>
   const title = '단어';
-
   const words = [
     ['~을 존중하다', 'respect']
   ];
-
-  const corrects: boolean[] = [];
-
-  function isMatched(response: string, answer: string, index): boolean {
+  const corrects = [];
+  function isMatched(response, answer, index) {
     console.log(response);
     
     corrects[index] = response === answer
@@ -37,16 +35,15 @@
     border: 1px solid #aaa;
     border-radius: 8px;
     padding: 8px 12px;
-    .title {
+  }
+	.title {
       border-bottom: 1px solid #f0f0f0;
     }
-  }
   .word {
     display: flex;
     justify-content: space-around;
     font-size: 18px;
   }
   .word__en {
-
   }
 </style>
