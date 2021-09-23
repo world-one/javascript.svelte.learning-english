@@ -4,13 +4,17 @@
 
 <div class="wrap">
   <h1 class="title">{title}</h1>
+	<div class="score">
+		<span> 점수 : {score}</span>
+		<button on:click={() => showHind = !showHind} class="toggle-language-button">힌트</button>
+	</div>
   <ul class="words">
-    {#each words as item, index}
+    {#each WORDS as item, index}
       <li class="word"> 
         <span class="word__ko">{item[0]}</span>
 				<div class="word__enter">
 					<span class="word__en">
-						<input class="" type="text" on:input={(e) => isMatched(e.target.value, item[1], index)}>
+						<input placeholder={showHind ? masking(item[1]) : ''} type="text" on:input={(e) => isMatched(e.target.value, item[1], index)}>
 					</span>
 					<span class="correct-tag">{corrects[index] ? '정답' : '오답'}</span>
 			</div>
@@ -18,21 +22,12 @@
     {/each}
   </ul>
 </div>
-<div class="score">
-	점수 : {score}
-</div>
 
 <script>
+	import { WORDS } from "./contants/words";
   const title = '단어장';
-  const words = [
-    ['~을 존중하다', 'respect'],
-		['의지', 'will'],
-		['개인, 개인의', 'individual'],
-		['편하게 생각해', 'Take it easy'],
-		['~(관계 등)을 유지하다', 'maintain']
-  ];
   const corrects = [];
-	
+	let showHind = false;
 	let score = getScore();
 
   function isMatched(response, answer, index) {  
@@ -42,8 +37,11 @@
   }
 	function getScore() {
 		const correctScore = corrects.filter((v) => v === true).length;
-		console.log(corrects);
-		return `${correctScore} / ${words.length}`;
+		return `${correctScore} / ${WORDS.length}`;
+	}
+
+	function masking(word) {
+		return word.replace(/(?<=.).(?=.)/g, '*');
 	}
 </script>
 
@@ -64,6 +62,7 @@
     padding: 8px 12px;
 		.title {
       border-bottom: 1px solid #f0f0f0;
+			margin-bottom: 0;
     }
   }
 	
@@ -104,12 +103,21 @@
 		padding: 2px 4px;
 	}
 	.score {
-		position: fixed;
-		bottom: 16px;
-		right: 16px;
-		border: 2px solid #222;
+		position: sticky;
+		top: 0;
+		border-top: 1px dashed #999;
+		border-bottom: 1px dashed #999;
 		padding: 4px 8px;
-		border-radius: 8px;
+		margin-bottom: 16px;
 		font-size: 15px;
+		background-color: white;
+		display: flex;
+		justify-content: space-between;
+	}
+	.toggle-language-button {
+		padding: 2px 4px;
+		margin: 0;
+		background-color: transparent;
+		font-size: 13px;
 	}
 </style>
