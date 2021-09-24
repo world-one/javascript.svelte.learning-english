@@ -8,6 +8,7 @@ import postcss from 'rollup-plugin-postcss'
 import preprocess from 'svelte-preprocess';
 import html from 'rollup-plugin-generate-html-template';
 import del from 'rollup-plugin-delete'
+import path from 'path';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -55,9 +56,9 @@ export default {
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
-		// css({ entryFileNames:  'bundle[hash].css'}),
+		// css({ output: 'bundle.css' }),
 		postcss({
-			extract: true,
+			extract: true
 		}),
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
@@ -69,10 +70,6 @@ export default {
 			dedupe: ['svelte']
 		}),
 		commonjs(),
-		html({
-			template: 'dist/index.html',
-			target: 'public/index.html'
-		}),
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
 		!production && serve(),
@@ -83,7 +80,11 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+		html({
+			template: 'dist/index.html',
+			target: 'public/index.html',
+		}),
 	],
 	watch: {
 		clearScreen: false
