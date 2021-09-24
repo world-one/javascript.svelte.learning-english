@@ -4,7 +4,10 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import css from 'rollup-plugin-css-only';
+import postcss from 'rollup-plugin-postcss'
 import preprocess from 'svelte-preprocess';
+import html from 'rollup-plugin-generate-html-template';
+import del from 'rollup-plugin-delete'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -35,9 +38,14 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		// file: 'public/build/bundle[hash].js',
+		dir: 'public/build',
+		entryFileNames: 'bundle[hash].js',
 	},
 	plugins: [
+		del({
+			targets: 'public/build/*'
+		}),
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
@@ -47,8 +55,10 @@ export default {
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
-		css({ output: 'bundle.css' }),
-
+		// css({ entryFileNames:  'bundle[hash].css'}),
+		postcss({
+			extract: true,
+		}),
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
 		// some cases you'll need additional configuration -
@@ -59,7 +69,10 @@ export default {
 			dedupe: ['svelte']
 		}),
 		commonjs(),
-
+		html({
+			template: 'dist/index.html',
+			target: 'public/index.html'
+		}),
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
 		!production && serve(),

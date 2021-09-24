@@ -11,5 +11,12 @@ export const WORDS = [
   ['헌법', 'constitution'],
   ['몸을 기울이다', 'lean'],
   ['기둥', 'pillar'],
-  ['물끄러미 바라보다', 'gaze']
+  ['물끄러미 바라보다', 'gaze'],
+  ['조각상', 'statue'],
+  ['~의 옆을 지나가다', 'pass by'],
+  ['~(냄새, 빛, 열)을 발산하다', 'give ...off'],
+  ['희미한', 'subtle'],
+  ['냄새, 향기', 'sent'],
+  ['향수', 'perfume'],
+  ['~(사람)에게 생각나게 하다.', 'remind']
 ];
