@@ -380,8 +380,8 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[7] = list[i];
-    	child_ctx[9] = i;
+    	child_ctx[8] = list[i];
+    	child_ctx[10] = i;
     	return child_ctx;
     }
 
@@ -389,7 +389,7 @@ var app = (function () {
     function create_each_block(ctx) {
     	let li;
     	let span0;
-    	let t0_value = /*item*/ ctx[7][0] + "";
+    	let t0_value = /*item*/ ctx[8][0] + "";
     	let t0;
     	let t1;
     	let div;
@@ -398,14 +398,14 @@ var app = (function () {
     	let input_placeholder_value;
     	let t2;
     	let span2;
-    	let t3_value = (/*corrects*/ ctx[0][/*index*/ ctx[9]] ? '정답' : '오답') + "";
+    	let t3_value = (/*corrects*/ ctx[0][/*index*/ ctx[10]] ? '정답' : '오답') + "";
     	let t3;
     	let t4;
     	let mounted;
     	let dispose;
 
     	function input_handler(...args) {
-    		return /*input_handler*/ ctx[5](/*item*/ ctx[7], /*index*/ ctx[9], ...args);
+    		return /*input_handler*/ ctx[5](/*item*/ ctx[8], /*index*/ ctx[10], ...args);
     	}
 
     	const block = {
@@ -423,7 +423,7 @@ var app = (function () {
     			t4 = space();
     			attr_dev(span0, "class", "word__ko");
     			add_location(span0, file, 13, 8, 339);
-    			attr_dev(input, "placeholder", input_placeholder_value = /*showHind*/ ctx[1] ? masking(/*item*/ ctx[7][1]) : '');
+    			attr_dev(input, "placeholder", input_placeholder_value = /*showHind*/ ctx[1] ? masking(/*item*/ ctx[8][1]) : '');
     			attr_dev(input, "type", "text");
     			attr_dev(input, "class", "svelte-zk8yx1");
     			add_location(input, file, 16, 6, 444);
@@ -457,11 +457,11 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
 
-    			if (dirty & /*showHind*/ 2 && input_placeholder_value !== (input_placeholder_value = /*showHind*/ ctx[1] ? masking(/*item*/ ctx[7][1]) : '')) {
+    			if (dirty & /*showHind*/ 2 && input_placeholder_value !== (input_placeholder_value = /*showHind*/ ctx[1] ? masking(/*item*/ ctx[8][1]) : '')) {
     				attr_dev(input, "placeholder", input_placeholder_value);
     			}
 
-    			if (dirty & /*corrects*/ 1 && t3_value !== (t3_value = (/*corrects*/ ctx[0][/*index*/ ctx[9]] ? '정답' : '오답') + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*corrects*/ 1 && t3_value !== (t3_value = (/*corrects*/ ctx[0][/*index*/ ctx[10]] ? '정답' : '오답') + "")) set_data_dev(t3, t3_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(li);
@@ -625,6 +625,13 @@ var app = (function () {
     	const corrects = [];
     	let showHind = false;
     	let score = getScore();
+    	randomSortWords();
+
+    	function randomSortWords() {
+    		WORDS.sort(() => {
+    			return Math.random() - Math.random();
+    		});
+    	}
 
     	function isMatched(response, answer, index) {
     		$$invalidate(0, corrects[index] = response.toLowerCase() === answer.toLowerCase(), corrects);
@@ -652,6 +659,7 @@ var app = (function () {
     		corrects,
     		showHind,
     		score,
+    		randomSortWords,
     		isMatched,
     		getScore,
     		masking
@@ -690,4 +698,4 @@ var app = (function () {
     return app;
 
 }());
-//# sourceMappingURL=bundle4cbd10de.js.map
+//# sourceMappingURL=bundlebe4bcdb7.js.map
