@@ -30,6 +30,14 @@
 	let showHind = false;
 	let score = getScore();
 
+	randomSortWords();
+	
+	function randomSortWords() {
+		WORDS.sort(() => {
+			return Math.random() - Math.random();
+		})
+	}
+
   function isMatched(response, answer, index) {  
     corrects[index] = response.toLowerCase() === answer.toLowerCase();
 		score = getScore();
