@@ -14,12 +14,17 @@ export const WORDS = [
   ['물끄러미 바라보다', 'gaze'],
   ['조각상', 'statue'],
   ['~의 옆을 지나가다', 'pass by'],
-  ['~(냄새, 빛, 열)을 발산하다', 'give ...off'],
+  ['~(냄새, 빛, 열)을 발산하다', 'give off'],
   ['희미한', 'subtle'],
   ['냄새, 향기', 'scent'],
   ['향수', 'perfume'],
   ['~(사람)에게 생각나게 하다.', 'remind'],
   ['심한', 'awful'],
   ['~한 맛이 나다', 'taste'],
-  ['훌륭한', 'terrific']
+  ['훌륭한', 'terrific'],
+  ['흠뻑 젖은', 'soaked'],
+  ['땀', 'sweat'],
+  ['뒤로 물러서다', 'stand back'],
+  ['악취가 나다', 'stink'],
+  ['샤워를 하다', 'take a shower']
 ];
