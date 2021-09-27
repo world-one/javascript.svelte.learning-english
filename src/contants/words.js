@@ -26,5 +26,9 @@ export const WORDS = [
   ['땀', 'sweat'],
   ['뒤로 물러서다', 'stand back'],
   ['악취가 나다', 'stink'],
-  ['샤워를 하다', 'take a shower']
+  ['샤워를 하다', 'take a shower'],
+  ['거의 ~하지 않다', 'scarcely'],
+  ['A와 B를 구별하다', 'tell A from B'],
+  ['산문', 'prose'],
+  ['시', 'poetry'],
 ];

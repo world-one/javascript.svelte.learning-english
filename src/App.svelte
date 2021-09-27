@@ -11,6 +11,7 @@
   <ul class="words">
     {#each WORDS as item, index}
       <li class="word"> 
+				<span>{index + 1}. </span>
         <span class="word__ko">{item[0]}</span>
 				<div class="word__enter">
 					<span class="word__en">
@@ -25,6 +26,7 @@
 
 <script>
 	import { WORDS } from "./contants/words";
+	const WORDS_LENGTH = 20;
   const title = '단어장';
   const corrects = [];
 	let showHind = false;
@@ -35,7 +37,8 @@
 	function randomSortWords() {
 		WORDS.sort(() => {
 			return Math.random() - Math.random();
-		})
+		});
+		WORDS.splice(WORDS_LENGTH);
 	}
 
   function isMatched(response, answer, index) {  
@@ -45,7 +48,7 @@
   }
 	function getScore() {
 		const correctScore = corrects.filter((v) => v === true).length;
-		return `${correctScore} / ${WORDS.length}`;
+		return `${correctScore} / ${WORDS_LENGTH}`;
 	}
 
 	function masking(word) {
