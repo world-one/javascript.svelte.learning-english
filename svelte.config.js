@@ -1,9 +1,15 @@
-import preprocess from 'svelte-preprocess';
+// import preprocess from 'svelte-preprocess';
 
-const config = {
-	// Consult https://github.com/sveltejs/svelte-preprocess
-	// for more information about preprocessors
-	preprocess: preprocess(),
+// const config = {
+// 	// Consult https://github.com/sveltejs/svelte-preprocess
+// 	// for more information about preprocessors
+// 	preprocess: preprocess(),
+// };
+
+// export default config;
+
+const sveltePreprocess = require('svelte-preprocess');
+
+module.exports = {
+    preprocess: sveltePreprocess()
 };
-
-export default config;
