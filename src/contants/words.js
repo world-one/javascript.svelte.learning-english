@@ -31,4 +31,7 @@ export const WORDS = [
   ['A와 B를 구별하다', 'tell A from B'],
   ['산문', 'prose'],
   ['시', 'poetry'],
+  ['최신의', 'up-to-date'],
+  ['백과 사전', 'encyclopedia'],
+  ['나오다, 발매 되다', 'come out'],
 ];
