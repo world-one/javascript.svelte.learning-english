@@ -58,7 +58,7 @@ export default {
 		// a separate file - better for performance
 		// css({ output: 'bundle.css' }),
 		postcss({
-			extract: true
+			exec: true,
 		}),
 		// If you have external dependencies installed from
 		// npm, you'll most likely need these plugins. In
