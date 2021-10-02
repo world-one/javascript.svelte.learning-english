@@ -26,7 +26,7 @@
 
 <script>
 	import { WORDS } from '../../contants/words';
-	const WORDS_LENGTH = 20;
+	const WORDS_LENGTH = 10;
   const title = '단어장';
   const corrects = [];
 	let showHind = false;

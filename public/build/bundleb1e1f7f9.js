@@ -1940,7 +1940,7 @@ var app = (function () {
     	return block;
     }
 
-    const WORDS_LENGTH = 20;
+    const WORDS_LENGTH = 10;
     const title = '단어장';
 
     function masking(word) {
@@ -2175,4 +2175,4 @@ var app = (function () {
     return app;
 
 }());
-//# sourceMappingURL=bundlee2ae4e1c.js.map
+//# sourceMappingURL=bundleb1e1f7f9.js.map
