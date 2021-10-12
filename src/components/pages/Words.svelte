@@ -25,7 +25,7 @@
 </div>
 
 <script>
-	import { WORDS } from '../../contants/words';
+	import { WORDS } from '../../constants/words';
 	const WORDS_LENGTH = 10;
   const title = '단어장';
   const corrects = [];
@@ -57,13 +57,6 @@
 </script>
 
 <style lang="scss">
-	ul, input {
-		margin: 0;
-		padding: 0;
-	}
-	li {
-		list-style: none;
-	}
   .wrap {
 		box-sizing: border-box;
     max-width: 576px;
@@ -85,9 +78,7 @@
 		padding: 0 8px 8px;
 
   }
-	.word__ko {
-		
-	}
+
 	.word__enter {
 		display: flex;
     justify-content: flex-end;
