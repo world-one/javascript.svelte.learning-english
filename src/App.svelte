@@ -3,9 +3,7 @@
 	import { routes } from "../router";
 </script>
 
-<body>
-	<Router { routes } />
-</body>
+<Router { routes } />
 
 <style type="scss">
 	:global(*) {

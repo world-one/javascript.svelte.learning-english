@@ -9,6 +9,7 @@ import preprocess from 'svelte-preprocess';
 import html from 'rollup-plugin-generate-html-template';
 import del from 'rollup-plugin-delete'
 import path from 'path';
+import json from '@rollup/plugin-json';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -44,6 +45,7 @@ export default {
 		entryFileNames: 'bundle[hash].js',
 	},
 	plugins: [
+		json(),
 		del({
 			targets: 'public/build/*'
 		}),
