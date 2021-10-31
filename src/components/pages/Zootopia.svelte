@@ -3,11 +3,16 @@
 </svelte:head>
 
 <div class="wrap">
+  <div class="pagination">
+    {#each { length: zootopiaScript.pages } as _, pageNumber}
+      <button class="pagination__button {currentPage === pageNumber + 1 ? 'current' : ''}" on:click={() => movePage(pageNumber + 1)}>{ pageNumber + 1 }</button>
+    {/each}
+  </div>
   <ul class="script">
-    {#each zootopiaScript as item, index}
+    {#each zootopiaScript.result as item, index}
     <li class="script__line">
       {#if 
-        zootopiaScript[index - 1]?.name !== item.name
+        zootopiaScript.result[index - 1]?.name !== item.name
       }
       <span class="line__name">{item.name}</span>
       {/if}
@@ -15,38 +20,35 @@
     </li>
     {/each}
   </ul>
-  <button on:click={() => movePage(1)}>1</button>
-  <button on:click={() => movePage(2)}>2</button>
 </div>
 
 <script>
-  
   import { getScript } from "../../service/zootopia";
-
+  let currentPage = 1;
   let zootopiaScript = getScript();
-
-
-  console.log(zootopiaScript)
-
   function movePage(page) {
+    currentPage = page;
     zootopiaScript = getScript(page);
   }
 
 </script>
 
 <style lang="scss">
+  button {
+    margin-bottom: 0;
+  }
   .wrap {
     background-color: #000;
     height: 100%;
-    padding-top: 24px;
   }
   .script {
     max-width: 568px;
     margin: auto;
     padding: 32px;
-    height: 90vh;
     overflow: auto;
-    border: 1px solid #fff;
+    border: 2px solid #666;
+    box-shadow: 2px 4px 8px rgba(255,255,255, 0.3);
+    border-radius: 8px;
   }
   .script__line {
     margin-bottom: 24px;
@@ -62,5 +64,22 @@
     padding-top: 4px;
     font-size: 18px;
     line-height: 1.5;
+  }
+
+  .pagination {
+    text-align: center;
+    border-bottom: 1px dashed #999;
+    margin-bottom: 16px;
+    padding: 4px 0;
+    &__button {
+      border: none;
+      background: none;
+      color: #999;
+      font-size: 20px;
+      &.current {
+        color: #fff;
+        font-weight: bold;
+      }
+    }
   }
 </style>

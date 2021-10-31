@@ -7,5 +7,11 @@ export function getScript(page = 1) {
   console.log(page, offset);
   const result = script.splice(offset, limit);
   console.log(result);
-  return result;
+  const total = zootopia.script.length;
+  console.log({total, script});
+  return {
+    pages: Math.ceil(total /limit),
+    currentPage: page,  
+    result
+  };
 }
