@@ -39,7 +39,7 @@
   }
   .wrap {
     background-color: #000;
-    height: 100%;
+    min-height: 100%;
   }
   .script {
     max-width: 568px;
@@ -62,7 +62,7 @@
   .line__text {
     padding-left: 8px;
     padding-top: 4px;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.5;
   }
 
